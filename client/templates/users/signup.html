@@ -1,0 +1,36 @@
+<template name="signup">
+
+    <div class="container">
+        {{> alerts}}
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <form class="form-horizontal form-signup col-sm-6">
+
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" autofocus>
+                        <span class="help-block hidden">Please input an email.</span>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <button class="btn btn-primary" data-loading-text="Validating..." id="btnValidate" type="button" autocomplete="off" disabled>Validate</button>
+                    </div>
+                </div>
+
+                {{#if validated}}
+
+                    {{> signup_detail profile}}
+
+                {{/if}}
+
+            </form>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,86 @@
+<template name="signup_detail">
+
+    <div class="form-group">
+        <label for="inputUsername" class="col-sm-3 control-label">Username</label>
+
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputUsername" placeholder="username" required>
+        </div>
+
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputName" class="col-sm-3 control-label">Name</label>
+
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputName" placeholder="Name" value="{{name}}" readonly>
+        </div>
+
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="gender" class="col-sm-3 control-label">Gender</label>
+
+        <div class="col-sm-6">
+            <label class="radio-inline">
+                <input type="radio" name="gender" id="radioMale" value="1" disabled> Male
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" id="radioFemale" value="2" disabled> Female
+            </label>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="inputMobile" class="col-sm-3 control-label">Mobile</label>
+
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputMobile" placeholder="Mobile" value="{{mobile}}" readonly>
+        </div>
+
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputDepartment" class="col-sm-3 control-label">Department</label>
+
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputDepartment" placeholder="Department" value="{{department}}" readonly>
+        </div>
+
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputPosition" class="col-sm-3 control-label">Position</label>
+
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputPosition" placeholder="Position" value="{{position}}" readonly>
+        </div>
+
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-3 control-label">Password</label>
+
+        <div class="col-sm-6">
+            <input type="password" class="form-control" id="inputPassword" placeholder="At least 6 characters"
+                   required>
+            <span class="help-block hidden">Password must be no less than 6 characters.</span>
+        </div>
+
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6">
+            <button type="submit" class="btn btn-default btn-primary">Sign up</button>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+</template>
