@@ -1,19 +1,16 @@
 Meteor.users.allow({
-    insert: function(userId, user){
+    insert: function (userId, user) {
         return !userId;
     }
 });
 
 
 Meteor.methods({
-
     validateEmail: function (email) {
-
         check(email, String);
-
         this.unblock();
 
-        if(Accounts.findUserByEmail(email)){
+        if (Accounts.findUserByEmail(email)) {
             throw ERROR_USERNAME_ALREADY_EXISTS;
         }
 
@@ -26,22 +23,19 @@ Meteor.methods({
             },
             timeout: 5000
         });
-
         exmailErrorHandler(result.data);
 
         return result.data;
     },
-
-    signupUser: function(user){
-
+    signupUser: function (user) {
         check(user, {
             username: String,
-            password: Match.Where(function(x){
+            password: Match.Where(function (x) {
                 check(x, String);
                 return x.length >= 6 && x.length <= 15;
             }),
             email: String,
-            profile:{
+            profile: {
                 name: String,
                 gender: Number,
                 department: String,
@@ -50,10 +44,17 @@ Meteor.methods({
         });
 
         var userId = Accounts.createUser(user);
-
         Accounts.sendVerificationEmail(userId);
+    },
+    isVerifiedEmail: function (identification) {
+        var user = null;
+        if ((user = Accounts.findUserByUsername(identification)) ||
+            (user = Accounts.findUserByEmail(identification))) {
+            var email = user.emails[0];
+            return email.verified;
+        } else {
+            throw ERROR_USER_NOT_FOUND;
+        }
     }
-
-
 });
 

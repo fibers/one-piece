@@ -1,7 +1,7 @@
 exmailToken = {};
 authorization = '';
 
-Meteor.startup(function(){
+Meteor.startup(function () {
     var oauthParams = {
         grant_type: Meteor.settings.exmail.grantType,
         client_id: Meteor.settings.exmail.clientId,
@@ -11,7 +11,6 @@ Meteor.startup(function(){
     var options = {
         params: oauthParams
     };
-
 
     HTTP.post(Meteor.settings.exmail.oauthEndpoint, {
         params: oauthParams
