@@ -1,6 +1,3 @@
-exmailToken = {};
-authorization = '';
-
 Meteor.startup(function () {
     var oauthParams = {
         grant_type: Meteor.settings.exmail.grantType,
@@ -18,8 +15,8 @@ Meteor.startup(function () {
         if (error) {
             throw new Meteor.Error(error);
         } else {
-            exmailToken = result.data;
-            authorization = exmailToken.token_type + " " + exmailToken.access_token;
+            Exmail.token = result.data;
+            Exmail.authorization = Exmail.token.token_type + " " + Exmail.token.access_token;
         }
     });
 

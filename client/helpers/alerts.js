@@ -16,3 +16,6 @@ alertSuccess = function(message){
     Alerts.insert({type:'success',message: message})
 }
 
+cleanAlerts = function(){
+    Alerts.remove({});
+}

@@ -8,24 +8,13 @@ Meteor.users.allow({
 Meteor.methods({
     validateEmail: function (email) {
         check(email, String);
-        this.unblock();
 
         if (Accounts.findUserByEmail(email)) {
             throw ERROR_USERNAME_ALREADY_EXISTS;
         }
 
-        var result = HTTP.post(Meteor.settings.exmail.apiEndpoint + "/openapi/user/get", {
-            headers: {
-                Authorization: exmailToken.token_type + " " + exmailToken.access_token
-            },
-            params: {
-                alias: email
-            },
-            timeout: 5000
-        });
-        exmailErrorHandler(result.data);
-
-        return result.data;
+        var user = Exmail.getUserByEmail(email);
+        return user;
     },
     signupUser: function (user) {
         check(user, {
@@ -47,7 +36,6 @@ Meteor.methods({
         Accounts.sendVerificationEmail(userId);
     },
     isVerifiedEmail: function (identification) {
-        var user = null;
         if ((user = Accounts.findUserByUsername(identification)) ||
             (user = Accounts.findUserByEmail(identification))) {
             var email = user.emails[0];

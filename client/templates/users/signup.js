@@ -67,16 +67,7 @@ Template.signup.events({
                 inputEmail.val('');
             } else {
                 btn.hide();
-
-                var profile = {
-                    name: result.Name,
-                    mobile: result.Mobile,
-                    department: result.PartyList.List[0].Value,
-                    position: result.Position,
-                    gender: result.Gender
-                };
-                t.profile = profile;
-
+                t.profile = result;
                 t.validated.set(true);
             }
         });
@@ -120,13 +111,11 @@ Template.signup.events({
             if (error) {
                 alertError(error.reason);
             } else {
-                Router.go('login', {
-                    onBeforeAction: function () {
-                        alertInfo('A verification email has been sent to your email ' +
-                        'by which you just registered on One Piece website, ' +
-                        'please click the link in the email to finish the registration.');
-                    }
-                });
+                cleanAlerts();
+                alertInfo('A verification email has been sent to your email ' +
+                'with which you just registered on One Piece website, ' +
+                'please click the link in that email to finish the registration.');
+                Router.go('login');
             }
         });
     }
