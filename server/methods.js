@@ -1,3 +1,6 @@
+/**
+ * Authentication
+ */
 Meteor.methods({
     validateEmail: function (email) {
         check(email, String);

@@ -22,3 +22,4 @@ Meteor.startup(function () {
 
     process.env.MAIL_URL = Meteor.settings.exmail.mail_url;
 });
+
