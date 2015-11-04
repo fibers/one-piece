@@ -1,10 +1,3 @@
-Meteor.users.allow({
-    insert: function (userId, user) {
-        return !userId;
-    }
-});
-
-
 Meteor.methods({
     validateEmail: function (email) {
         check(email, String);

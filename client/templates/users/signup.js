@@ -3,7 +3,7 @@ Template.signup.onCreated(function () {
     this.profile = {};
 });
 
-Template.signup_detail.onRendered(function () {
+Template.signupDetail.onRendered(function () {
     var gender = this.data.gender;
     if (gender === 1) {
         this.$('#radioMale').attr('checked', true);
@@ -81,7 +81,8 @@ Template.signup.events({
         btnSignup.attr('disabled', true);
 
         var inputPassword = form.find('#inputPassword');
-        if (inputPassword.val().length < 6) {
+        var password = inputPassword.val();
+        if (password && password.length < 6) {
             btnSignup.attr('disabled', false);
             inputPassword.parents('.form-group:first').addClass('has-error');
             inputPassword.next('span').removeClass('hidden');
@@ -111,7 +112,6 @@ Template.signup.events({
             if (error) {
                 alertError(error.reason);
             } else {
-                cleanAlerts();
                 alertInfo('A verification email has been sent to your email ' +
                 'with which you just registered on One Piece website, ' +
                 'please click the link in that email to finish the registration.');

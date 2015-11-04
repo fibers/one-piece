@@ -1,5 +1,4 @@
 <template name="header">
-
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -15,17 +14,9 @@
 
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav">
-                    <li class="{{activeRouteClass 'members'}}">
-                        <a href="{{pathFor 'members'}}">Members</a>
+                    <li class="{{activeRouteClass 'departments'}}">
+                        <a href="{{pathFor 'departments'}}">Departments</a>
                     </li>
-                    <!--{{#if currentUser}}-->
-                        <!--<li class="{{activeRouteClass 'postSubmit'}}">-->
-                            <!--<a href="{{pathFor 'postSubmit'}}">Submit Post</a>-->
-                        <!--</li>-->
-                        <!--<li class="dropdown">-->
-                            <!--{{> notifications}}-->
-                        <!--</li>-->
-                    <!--{{/if}}-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -40,7 +31,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
-
 </template>

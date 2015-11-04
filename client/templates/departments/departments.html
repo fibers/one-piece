@@ -1,0 +1,27 @@
+<template name="departments">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                {{#each departments}}
+                    <div class="panel panel-info">
+                        <div class="panel-heading">{{department}}
+                            <span class="caret"></span>
+                        </div>
+                        <ul class="list-group">
+                            {{#each members}}
+                                <li class="list-group-item">{{profile.name}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/each}}
+            </div>
+
+            <div class="col-sm-10">
+
+            </div>
+        </div>
+    </div>
+
+
+</template>
