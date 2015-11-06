@@ -2,24 +2,38 @@
 
     <div class="container-fluid">
         <div class="row">
+
+            <div class="col-sm-1"></div>
+
             <div class="col-sm-2">
                 {{#each departments}}
-                    <div class="panel panel-info">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">{{department}}
                             <span class="caret"></span>
                         </div>
                         <ul class="list-group">
                             {{#each members}}
-                                <li class="list-group-item">{{profile.name}}&nbsp;(&nbsp;{{profile.position}}&nbsp;)</li>
+                                <a href="#" class="list-group-item" id="{{_id}}">
+                                    {{#if unreadMessagesCount _id}}
+                                    <span class="badge" style="background-color:#f55f55">
+                                        {{unreadMessagesCount _id}}
+                                    </span>
+                                    {{/if}}
+                                    {{profile.name}}&nbsp;(&nbsp;{{profile.position}}&nbsp;)
+                                </a>
                             {{/each}}
                         </ul>
                     </div>
                 {{/each}}
             </div>
 
-            <div class="col-sm-10">
-
+            <div class="col-sm-8" id="chatView">
+                {{#if withUser}}
+                    {{> chat withUser}}
+                {{/if}}
             </div>
+
+            <div class="col-sm-1"></div>
         </div>
     </div>
 

@@ -1,0 +1,19 @@
+<template name="message">
+    <li class="list-group-item" style="border:none;padding:10px 30px;background-color:#f5f5f5">
+        {{#if isFromMe}}
+            <div>
+            <strong class="" style="display:block">{{currentUser.profile.name}}</strong>
+            <p class="bg-info chat-message">
+                {{content}}
+            </p>
+            </div>
+        {{else}}
+            <div>
+                <strong class="" style="display:block">{{toUser.profile.name}}</strong>
+                <p class="bg-success chat-message">
+                    {{content}}
+                </p>
+            </div>
+        {{/if}}
+    </li>
+</template>

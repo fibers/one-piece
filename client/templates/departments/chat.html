@@ -1,0 +1,19 @@
+<Template name="chat">
+
+    <div id="displayView" class="well well-lg" style="height:500px;overflow:scroll">
+        <ul class="list-group" style="background-color:#eee">
+            {{#each messages}}
+                {{> message}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div id="inputView" class="input-group" style="margin-top:10px">
+        <span class="input-group-addon">To {{profile.name}}:</span>
+        <input type="text" id="inputMessage" class="form-control" placeholder="Send message...">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="button" id="btnSend" disabled>Send</button>
+        </span>
+    </div>
+
+</Template>
