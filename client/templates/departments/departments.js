@@ -31,7 +31,6 @@ Template.departments.helpers({
     }
 });
 
-
 Template.departments.events({
     'click a': function (e, t) {
         e.preventDefault();

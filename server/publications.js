@@ -10,10 +10,26 @@ Meteor.publish('allUsers', function () {
 
 
 Meteor.publish('myMessages', function () {
-    return Messages.find({
+    var sub = this;
+    var handler = Messages.find({
         $or: [
             {fromUserId: this.userId},
             {toUserId: this.userId}
         ]
+    }).observeChanges({
+        added:function(id, message){
+            sub.added('messages', id, message);
+        },
+        changed: function(id, fields){
+            sub.changed('messages', id, fields);
+        },
+        removed: function(id){
+            sub.removed('messages', id);
+        }
+    });
+
+    sub.ready();
+    sub.onStop(function(){
+        handler.stop();
     });
 });

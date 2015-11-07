@@ -1,6 +1,6 @@
 Template.chat.onRendered(function () {
     var displayView = this.$('#displayView');
-    displayView[0].scrollTop = displayView[0].scrollHeight;
+    displayView.scrollTop(displayView.prop('scrollHeight'));
 });
 
 Template.chat.helpers({
@@ -13,9 +13,16 @@ Template.chat.helpers({
             ]
         }, {sort: {timestamp: 1}});
 
-        Meteor.call('readMessages', withUser._id, function(error, result){
-
+        messages.observeChanges({
+            added: function (id, message) {
+                if (message.toUserId === Meteor.userId()
+                    && message.read === false) {
+                    Messages.update(id, {$set: {read: true}});
+                    console.log('new message arrived');
+                }
+            }
         });
+
         return messages;
     }
 });
@@ -53,6 +60,6 @@ Template.chat.events({
         btnSend.attr('disabled', true);
 
         var displayView = t.$('#displayView');
-        displayView[0].scrollTop = displayView[0].scrollHeight;
+        displayView.scrollTop(displayView.prop('scrollHeight'));
     }
 });

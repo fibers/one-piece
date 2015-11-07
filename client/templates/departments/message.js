@@ -1,9 +1,17 @@
+Template.message.onCreated(function(){
+   console.log('created');
+});
+
+Template.message.onRendered(function(){
+    console.log('rendered');
+});
+
 Template.message.helpers({
-    isFromMe: function(){
+    isFromMe: function () {
         var message = Template.instance().data;
         return Meteor.userId() === message.fromUserId;
     },
-    toUser: function(){
+    withUser: function () {
         return Template.parentData();
     }
-})
+});
