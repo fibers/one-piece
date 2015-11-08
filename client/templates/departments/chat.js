@@ -1,8 +1,3 @@
-Template.chat.onRendered(function () {
-    var displayView = this.$('#displayView');
-    displayView.scrollTop(displayView.prop('scrollHeight'));
-});
-
 Template.chat.helpers({
     messages: function () {
         var withUser = Template.instance().data;
@@ -18,9 +13,13 @@ Template.chat.helpers({
                 if (message.toUserId === Meteor.userId()
                     && message.read === false) {
                     Messages.update(id, {$set: {read: true}});
-                    console.log('new message arrived');
                 }
             }
+        });
+
+        Tracker.onInvalidate(function(c){
+            console.log(c);
+            console.log('invalidate');
         });
 
         return messages;

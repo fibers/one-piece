@@ -1,10 +1,8 @@
-Template.message.onCreated(function(){
-   console.log('created');
+Template.message.onRendered(function(){
+    var displayView = $('#displayView');
+    displayView.scrollTop(displayView.prop('scrollHeight'));
 });
 
-Template.message.onRendered(function(){
-    console.log('rendered');
-});
 
 Template.message.helpers({
     isFromMe: function () {
