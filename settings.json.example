@@ -1,0 +1,11 @@
+{
+  "public": {},
+  "exmail": {
+    "oauthEndpoint": "https://exmail.qq.com/cgi-bin/token",
+    "clientId": "",
+    "clientSecret": "",
+    "grantType": "client_credentials",
+    "apiEndpoint": "http://openapi.exmail.qq.com:12211",
+    "mail_url": ""
+  }
+}
