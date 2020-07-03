@@ -1,3 +1,3 @@
 # One Piece System
-A enterprise IM system based on Meteor in enterprise
+A enterprise IM system based on Meteor. 
  
